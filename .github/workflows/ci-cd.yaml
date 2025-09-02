@@ -1,4 +1,4 @@
-name: CI - Build and Push Docker Image
+name: CI - Build and Push Docker Images
 
 on:
   push:
@@ -17,11 +17,20 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
+      # Build and push frontend
       - name: Build and Push Frontend Image
         uses: docker/build-push-action@v4
         with:
-          context: ./frontend   # adjust if your Dockerfile is elsewhere
+          context: ./frontend
           push: true
           tags: roobobo/campus-connect-frontend:1.0
+
+      # Build and push backend
+      - name: Build and Push Backend Image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend
+          push: true
+          tags: roobobo/campus-connect-backend:1.0
