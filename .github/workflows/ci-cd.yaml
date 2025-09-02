@@ -24,4 +24,4 @@ jobs:
         with:
           context: ./frontend   # adjust if your Dockerfile is elsewhere
           push: true
-          tags: your-dockerhub-username/campus-connect-frontend:latest
+          tags: roobobo/campus-connect-frontend:1.0
