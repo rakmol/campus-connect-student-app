@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     environment {
-        KUBECONFIG = "/root/.kube/config"
+        KUBECONFIG = "/var/jenkins_home/.kube/config"
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/rakmol/campus-connect-student-app.git'
+                git branch: 'main', url: 'https://github.com/rakmol/campus-connect-student-app.git'
             }
         }
 
@@ -21,7 +20,7 @@ pipeline {
 
         stage('Verify Deployment') {
             steps {
-                sh 'kubectl get pods -n default'
+                sh 'kubectl get pods'
             }
         }
     }
