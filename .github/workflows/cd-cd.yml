@@ -34,12 +34,12 @@ jobs:
         uses: azure/k8s-deploy@v4
         with:
           manifests: |
-            k8s/mongo-deployment.yaml
-            k8s/mongo-service.yaml
-            k8s/backend-deployment.yaml
-            k8s/backend-service.yaml
-            k8s/frontend-deployment.yaml
-            k8s/frontend-service.yaml
+            k8s/mongo-deployment.yml
+            k8s/mongo-service.yml
+            k8s/backend-deployment.yml
+            k8s/backend-service.yml
+            k8s/frontend-deployment.yml
+            k8s/frontend-service.yml
           namespace: default
           images: |
             roobobo/campus-connect-backend:v3
