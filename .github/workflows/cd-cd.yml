@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
@@ -29,18 +29,3 @@ jobs:
           cd frontend
           docker build -t roobobo/campus-connect-frontend:v5 .
           docker push roobobo/campus-connect-frontend:v5
-
-      - name: Deploy to Kubernetes
-        uses: azure/k8s-deploy@v4
-        with:
-          manifests: |
-            k8s/mongo-deployment.yml
-            k8s/mongo-service.yml
-            k8s/backend-deployment.yml
-            k8s/backend-service.yml
-            k8s/frontend-deployment.yml
-            k8s/frontend-service.yml
-          namespace: default
-          images: |
-            roobobo/campus-connect-backend:v3
-            roobobo/campus-connect-frontend:v5
