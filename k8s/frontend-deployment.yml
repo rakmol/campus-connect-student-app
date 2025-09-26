@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: campus-frontend
+  template:
+    metadata:
+      labels:
+        app: campus-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: roobobo/campus-connect-frontend:v5
+          ports:
+            - containerPort: 80
